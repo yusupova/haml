@@ -373,7 +373,7 @@ END
 
       unless block_given?
         push_generated_script(no_format ? "#{text}\n" : "#{static_method}(#{output_expr});")
-        concat_merged_text("\n") unless opts[:in_tag] || opts[:nuke_inner_whitespace]
+        concat_merged_text("\n") unless opts[:in_tag]
         return
       end
 
@@ -382,7 +382,7 @@ END
       yield
       push_silent('end', :can_suppress) unless @node.value[:dont_push_end]
       @precompiled << "_hamlout.buffer << #{no_format ? "haml_temp.to_s;" : "#{static_method}(haml_temp);"}"
-      concat_merged_text("\n") unless opts[:in_tag] || opts[:nuke_inner_whitespace] || @options.ugly
+      concat_merged_text("\n") unless opts[:in_tag] || @options.ugly
     end
 
     def push_generated_script(text)
