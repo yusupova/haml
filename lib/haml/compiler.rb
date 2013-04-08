@@ -520,8 +520,7 @@ END
           rstrip_buffer! index
         end
       when :script
-        last[1].gsub!(/\(haml_temp, (.*?)\);$/, '(haml_temp.rstrip, \1);')
-        rstrip_buffer! index - 1
+        push_silent("_hamlout.rstrip!", false)
       else
         raise SyntaxError.new("[HAML BUG] Undefined entry in Haml::Compiler@to_merge.")
       end
