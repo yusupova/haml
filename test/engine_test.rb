@@ -384,6 +384,19 @@ HTML
 HAML
   end
 
+  def test_nuke_inner_whitespace_in_unrolled_loops
+    assert_equal(<<HTML, render(<<HAML))
+<ul>foo
+bar
+baz</ul>
+HTML
+%ul<
+  = "foo"
+  = "bar"
+  = "baz"
+HAML
+  end
+
   def test_both_whitespace_nukes_work_together
     assert_equal(<<RESULT, render(<<SOURCE))
 <p><q>Foo
