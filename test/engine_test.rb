@@ -374,7 +374,9 @@ HAML
 
   def test_nuke_inner_whitespace_in_loops
     assert_equal(<<HTML, render(<<HAML))
-<ul>foobarbaz</ul>
+<ul>foo
+bar
+baz</ul>
 HTML
 %ul<
   - for str in %w[foo bar baz]
