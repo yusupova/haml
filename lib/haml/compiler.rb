@@ -31,8 +31,7 @@ module Haml
     # @return [String]
     def precompiled
       encoding = Encoding.find(@options.encoding)
-      return @precompiled.force_encoding(encoding) if encoding == Encoding::ASCII_8BIT
-      return @precompiled.encode(encoding)
+      return @precompiled.force_encoding(encoding)
     end
 
     def precompiled_with_return_value
